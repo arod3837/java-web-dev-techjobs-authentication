@@ -15,6 +15,12 @@ import java.util.List;
 
 public class AuthenticationFilter extends HandlerInterceptorAdapter {
 
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    AuthenticationController authenticationController;
+
     private static final List<String> whitelist = Arrays.asList("/login", "/register", "/logout", "/css");
 
     private static boolean isWhitelisted(String path) {
@@ -50,10 +56,5 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
         return false;
     }
 
-    @Autowired
-    UserRepository userRepository;
-
-    @Autowired
-    AuthenticationController authenticationController;
 
 }
